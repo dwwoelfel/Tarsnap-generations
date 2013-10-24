@@ -143,10 +143,10 @@ for dir in $(cat $PATHS) ; do
 done
 
 #Delete old backups
-HOURLY_DELETE_TIME=$($DATE_BIN -d"-$HOURLY_CNT hour" +%Y%m%d-%H) 
-DAILY_DELETE_TIME=$($DATE_BIN -d"-$DAILY_CNT day" +%Y%m%d-%H)
-WEEKLY_DELETE_TIME=$($DATE_BIN -d"-$WEEKLY_CNT week" +%Y%m%d-%H)
-MONTHLY_DELETE_TIME=$($DATE_BIN -d"-$MONTHLY_CNT month" +%Y%m%d-%H)
+HOURLY_DELETE_TIME=$($DATE_BIN -v-$HOURLY_CNT$"H" +%Y%m%d-%H) 
+DAILY_DELETE_TIME=$($DATE_BIN -v-$DAILY_CNT$"d" +%Y%m%d-%H)
+WEEKLY_DELETE_TIME=$($DATE_BIN -v-$WEEKLY_CNT$"w" +%Y%m%d-%H)
+MONTHLY_DELETE_TIME=$($DATE_BIN -v-$MONTHLY_CNT$"m" +%Y%m%d-%H)
 
 if [ $QUIET != "1" ] ; then
     echo "Finding backups to be deleted."
